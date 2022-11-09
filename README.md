@@ -2,9 +2,9 @@
 This is an ALX Project on Shell. We are tasked to come up with our own version of simple shell
 
 ## Project Requirements
-[*] C language
-[*] Shell
-[*] Betty Linter
+* C language
+* Shell
+* Betty Linter
 
 ## General requirements for the Project
 * All files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
@@ -17,7 +17,7 @@ This is an ALX Project on Shell. We are tasked to come up with our own version o
 * Write a README with the description of the project
 
 ## Description
-** hsh ** is a simple UNIX command language interpreter that reads commands from either a file or standard input and executes them.
+**hsh** is a simple UNIX command language interpreter that reads commands from either a file or standard input and executes them.
 
 How hsh Works
 * Welcomes a shell user with his username!
