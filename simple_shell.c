@@ -7,9 +7,10 @@
  *
  * Return: 0 on success or other integer
  */
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
+int main(__attribute__((unused)) int argc, char *argv[])
 {
 	char *read;
+	char **tokens;
 
 	startup();
 
@@ -17,7 +18,16 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 	{
 		printf(">>>> ");
 		read = getInput();
-		printf("%s", read);
+		tokens = parser(read);
+
+		printf("The tokens are: ");
+
+		while (*tokens != NULL)
+		{
+			printf("%s, ", *tokens);
+			*tokens++;
+		}
+		printf("\n");
 	}
 
 	return (0);
