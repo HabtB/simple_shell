@@ -1,5 +1,5 @@
 # Simple Shell Team Project
-This is an ALX Project on Shell. We are tasked to come up with our own version of simple shell
+This is an ALX Project on Shell. We are tasked to come up with our own version of simple shell.
 
 ## Project Requirements
 * C language
@@ -25,7 +25,7 @@ How hsh Works
 * Creates a child process in which the command is checked
 * Checks for built-ins, aliases in the PATH, and local executable programs
 * The child process is replaced by the command, which accepts arguments
-* When the command is done, the program returns to the parent process and prints the prompt
+* When the command is done, the program returns to the parent process and prints the prompt.
 * The program is ready to receive a new command
 * To exit: press Ctrl-D or enter "exit" (with or without a status)
 * Works also in non interactive mode
