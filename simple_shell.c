@@ -7,28 +7,34 @@
  *
  * Return: 0 on success or other integer
  */
-int main(__attribute__((unused)) int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	char *read;
-	char **tokens;
+	ssize_t reads;
+	char *str = NULL;
+	size_t n = 0;
+
 
 	startup();
 
+	/* declaring void variables */
+	(void)argc, (void)argv;
+	
+	/* create an infinite loop */
 	while (1)
 	{
-		printf(">>>> ");
-		read = getInput();
-		tokens = parser(read);
+		printf("$ ");
 
-		printf("The tokens are: ");
+		reads = getline(&str, &n, stdin);
 
-		while (*tokens != NULL)
+		if (reads == -1)
 		{
-			printf("%s, ", *tokens);
-			*tokens++;
+			return (-1);
 		}
-		printf("\n");
+		printf("%s", str);
 	}
+	
+	/* free allocate memory */
+	free(str);
 
 	return (0);
 }

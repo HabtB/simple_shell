@@ -3,8 +3,8 @@
 
 /**###### MACROS #####*/
 
-#define BUFSIZE 1024;
-
+#define BUFSIZE 1024
+#define clear() printf("\033[H\033[J")
 
 
 /**###### LIBRARIES USED #####*/
@@ -17,16 +17,8 @@
 #include <string.h>
 
 
-/* Clear the shell using escape sequence */
-#define clear() printf("\033[H\033[J")
-
-
-
 /**###### Parser and extractor functions #####*/
 
-
 void startup(void);
-char * getInput(void);
-char **parser(char *line);
 
 #endif
