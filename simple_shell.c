@@ -2,15 +2,16 @@
 
 /**
  * main - entry point of the shell, checks interactivity
- * @argc: arg count
- * @argv: array of arguments
+ * @ac: arg count
+ * @av: array of arguments
  *
  * Return: 0 on success or other integer
  */
-int main(__attribute__((unused)) int argc, char *argv[])
+int main(__attribute__((unused)) int ac, __attribute__((unused)) char *av[])
 {
 	char *read;
 	char **tokens;
+	int i;
 
 	startup();
 
@@ -22,14 +23,14 @@ int main(__attribute__((unused)) int argc, char *argv[])
 
 		printf("The tokens are: ");
 
-		while (*tokens != NULL)
+		i = 0;
+		while (tokens[i] != NULL)
 		{
-			printf("%s, ", *tokens);
-			*tokens++;
+			printf("%s, ", tokens[i]);
+			i++;
 		}
 		printf("\n");
 	}
 
 	return (0);
 }
-
