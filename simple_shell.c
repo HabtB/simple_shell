@@ -30,7 +30,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char *av[])
 
 		if (_strcmp(tokens[0], "exit") == 0)
 		{
-			exit_bul(tokens, read, argv, counter);
+			exit_bul(tokens, read, av, counter);
 		}
 		else if (check_builtin(tokens) == 0)
 		{
@@ -40,7 +40,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char *av[])
 		}
 		else
 		{
-			st = check_cmd(tokens, read, counter, argv);
+			st = check_cmd(tokens, read, counter, av);
 
 		}
 		free_all(tokens, read);
