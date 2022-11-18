@@ -11,7 +11,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char *av[])
 {
 	char *read;
 	char **tokens;
-	int i;
+	int st = 0, counter = 0;
 
 	startup();
 
@@ -19,18 +19,75 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char *av[])
 	{
 		printf(">>>> ");
 		read = getInput();
+
+		if (read[0] == '\0')
+		{
+			continue;
+		}
+		history(read);
+
 		tokens = parser(read);
 
-		printf("The tokens are: ");
-
-		i = 0;
-		while (tokens[i] != NULL)
+		if (_strcmp(tokens[0], "exit") == 0)
 		{
-			printf("%s, ", tokens[i]);
-			i++;
+			exit_bul(tokens, read, argv, counter);
 		}
-		printf("\n");
+		else if (check_builtin(tokens) == 0)
+		{
+			st = handle_builtin(tokens, st);
+			free_all(tokens, read);
+			continue;
+		}
+		else
+		{
+			st = check_cmd(tokens, read, counter, argv);
+
+		}
+		free_all(tokens, read);
+	}
+	return (1);
+}
+
+
+/**
+ * check_builtin - check builtin
+ *
+ * @cmd:command to check
+ * Return: 0 Succes -1 Fail
+ */
+int check_builtin(char **cmd)
+{
+	bul_t fun[] = {
+		{"cd", NULL},
+		{"help", NULL},
+		{"echo", NULL},
+		{"history", NULL},
+		{NULL, NULL}
+	};
+	int i = 0;
+		if (*cmd == NULL)
+	{
+		return (-1);
 	}
 
-	return (0);
+	while ((fun + i)->command)
+	{
+		if (_strcmp(cmd[0], (fun + i)->command) == 0)
+			return (0);
+		i++;
+	}
+	return (-1);
+}
+/**
+ * creat_envi - Creat Array of Enviroment Variable
+ * @envi: Array of Enviroment Variable
+ * Return: Void
+ */
+void creat_envi(char **envi)
+{
+	int i;
+
+	for (i = 0; environ[i]; i++)
+		envi[i] = _strdup(environ[i]);
+	envi[i] = NULL;
 }
